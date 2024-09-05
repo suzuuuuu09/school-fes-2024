@@ -10,9 +10,8 @@ root.attributes("-fullscreen", True)  # フルスクリーンに設定
 canvas = tk.Canvas(root, width=1920, height=1080, background="white", highlightthickness=0)
 canvas.place(x=0, y=0)
 
-# 初期位置とリストの設定
-default_x = 1920
-default_y = 5
+default_x = 1920     # x座標
+default_y = 10     # y座標
 text_speed = 50     # テキストの動く速さ
 text = "あめんぼあかいなあいうえお"
 text_st = tk.StringVar()
