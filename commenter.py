@@ -2,23 +2,24 @@ import tkinter as tk
 from time import sleep
 
 MARGIN = 5000       # 余白
-default_x = 1920    # 開始位置のx座標
-default_y = 10      # 一行目のy座標
-text_speed = 1     # 流れるスピード
+DEFAULT_X = 1920    # 開始位置のx座標
+DEFAULT_Y = 10      # 一行目のy座標
+TEXT_SPEED_BASE = 1     # 流れるスピード
 
 def move():
-    global default_x, text_speed
-    label1.place_forget()  # ラベルを消去
-    label1.place(x=default_x, y=default_y)  # ラベルを再配置
-    default_x -= text_speed
+    global DEFAULT_X, TEXT_SPEED_BASE
+    for i, target in labelDist.items():
+        target.place_forget()  # ラベルを消去
+        target.place(x=DEFAULT_X, y=DEFAULT_Y + 50*i)  # ラベルを再配置
+        DEFAULT_X -= TEXT_SPEED_BASE
 
-    if default_x <= -label1.winfo_reqwidth():  # 画面左端まで文字が到達した場合
-        root.destroy()     # 終了する
-
+        if DEFAULT_X <= -target.winfo_reqwidth():  # 画面左端まで文字が到達した場合
+            root.destroy()     # 終了する
+    
+    print(labelDist)
     root.after(1, move)  # 1ミリ秒ごとにスクロール
 
 
-sleep(30)
 # ウィンドウの初期化
 root = tk.Tk()
 sWidth = root.winfo_width()
@@ -37,11 +38,14 @@ text_st = tk.StringVar()
 text_st.set(text)
 
 # ラベルを作成し、キャンバスに配置
-label1 = tk.Label(root, textvariable=text_st, font=('', 45), background="white", foreground="gray99")
-label1.place(x=default_x, y=default_y)
+labelDist = {}
+for i in range(5):
+    labelDist[i] = tk.Label(root, textvariable=text_st, font=('', 45), background="white", foreground="gray99")
+    labelDist[i].place(x=DEFAULT_X - 700, y=DEFAULT_Y + 75*i)
+
+move()
 
 # スクロール処理を開始
-move()
 
 # イベントループを開始
 root.mainloop()
