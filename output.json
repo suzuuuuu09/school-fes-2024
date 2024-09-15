@@ -21,6 +21,10 @@
     {
       "data": "effectName_1",
       "delay": 1
+    },
+    {
+      "data": "effectName_2",
+      "delay": 2111
     }
   ]
 }

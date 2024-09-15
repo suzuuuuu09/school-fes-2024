@@ -6,6 +6,7 @@
   ],
   "effect": [
     { "timestamp": 123456789, "data": "effectName_0" },
-    { "timestamp": 123456790, "data": "effectName_1" }
+    { "timestamp": 123456790, "data": "effectName_1" },
+    { "timestamp": 123458901, "data": "effectName_2" }
   ]
 }
