@@ -1,0 +1,11 @@
+{
+  "comment": [
+    { "timestamp": 123456789, "data": "Hello world!" },
+    { "timestamp": 123456790, "data": "This is a test" },
+    { "timestamp": 123458901, "data": "Good night" }
+  ],
+  "effect": [
+    { "timestamp": 123456789, "data": "effectName_0" },
+    { "timestamp": 123456790, "data": "effectName_1" }
+  ]
+}
