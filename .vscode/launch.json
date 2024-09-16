@@ -22,5 +22,15 @@
             "program": "${workspaceFolder}/parser_local_server.py",
             "console": "integratedTerminal"
         }
+    ],
+    "compounds": [
+        {
+            "name": "Develop",
+            "configurations": [
+                "Run Test Server",
+                "Run Data Parser",
+                "Run Parsered Data Local Server"
+            ]
+        }
     ]
 }
