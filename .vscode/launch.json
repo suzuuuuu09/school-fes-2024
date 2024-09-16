@@ -9,10 +9,10 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Run Data Parser",
+            "name": "Run Response Parser",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/data_parser.py",
+            "program": "${workspaceFolder}/response_parser.py",
             "console": "integratedTerminal"
         },
         {
@@ -35,7 +35,7 @@
             "name": "dev",
             "configurations": [
                 "Run Test Server",
-                "Run Data Parser",
+                "Run Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]
@@ -43,7 +43,7 @@
         {
             "name": "prod",
             "configurations": [
-                "Run Data Parser",
+                "Run Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]

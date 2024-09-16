@@ -12,11 +12,11 @@
   "effect": [
     {
       "data": "fireworks",
-      "delay": 0
+      "delay": 1234
     },
     {
       "data": "thunder",
-      "delay": 11101
+      "delay": 12335
     }
   ]
 }

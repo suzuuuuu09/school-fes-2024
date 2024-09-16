@@ -19,11 +19,19 @@ class DataParser:
         df_comment = pd.json_normalize(data['comment'])
         df_effect = pd.json_normalize(data['effect'])
 
+        min_df_comment = df_comment['timestamp'].min()
+        min_df_effect = df_effect['timestamp'].min()
+
+        min_timestamp = min(min_df_comment, min_df_effect)
+        
         # timestampの一行上のtimestampとの差をdelay列に書き込む
         # 欠損値NaNを0とする
         # id_diff列のデータ型をintに変換する
-        df_comment['delay'] = df_comment['timestamp'].diff().fillna(0).astype(int)
-        df_effect['delay'] = df_effect['timestamp'].diff().fillna(0).astype(int)
+        df_comment['delay'] = df_comment['timestamp'] - min_timestamp
+        df_effect['delay'] = df_effect['timestamp'] - min_timestamp
+
+        df_comment['delay'] = df_comment['delay'].fillna(0).astype(int)
+        df_effect['delay'] = df_effect['delay'].fillna(0).astype(int)
 
         # timestamp列を削除する
         df_comment.drop(columns=['timestamp'], inplace=True)
