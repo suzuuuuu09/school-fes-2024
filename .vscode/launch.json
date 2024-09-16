@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Test Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_server.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Data Parser",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/data_parser.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Parsered Data Local Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/parser_local_server.py",
+            "console": "integratedTerminal"
+        }
+    ]
+}

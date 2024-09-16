@@ -1,6 +1,11 @@
 import pandas as pd
 import json
 import requests
+from time import sleep
+from flask import *
+import json
+
+app = Flask(__name__)
 
 class DataParser:
     def __init__(self, url):
@@ -26,12 +31,26 @@ class DataParser:
 
         return df_comment, df_effect
 
-    def save_to_json(self, df_comment, df_effect, file_path):
+    def json_data(self, df_comment, df_effect):
         # 出力用のjsonデータを生成する
         output_data = {
             'comment': df_comment.to_dict(orient='records'),
             'effect': df_effect.to_dict(orient='records')
         }
 
-        with open(file_path, 'w') as f:
-            json.dump(output_data, f, indent=2)
+        return json.dumps(output_data, indent=2)
+
+if __name__ == '__main__':
+    url = 'http://localhost:8888'
+    response_interval = 5
+    output_file_path = 'data/output.json'
+
+    while True:
+        parser = DataParser(url)
+        data = parser.get_data()
+
+        df_comment, df_effect = parser.parse_data(data)
+
+        data = parser.json_data(df_comment, df_effect)
+        print(data)
+        sleep(response_interval)
