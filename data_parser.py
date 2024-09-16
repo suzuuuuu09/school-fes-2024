@@ -41,7 +41,7 @@ class DataParser:
         return json.dumps(output_data, indent=2)
 
 if __name__ == '__main__':
-    url = 'http://localhost:8888'
+    url = 'https://yaovxdll6j.execute-api.ap-northeast-1.amazonaws.com/school-fes-2024-UnityRequestReceiver'
     response_interval = 5
     output_file_path = 'data/output.json'
 
@@ -52,5 +52,7 @@ if __name__ == '__main__':
         df_comment, df_effect = parser.parse_data(data)
 
         data = parser.json_data(df_comment, df_effect)
+        with open(output_file_path, 'w') as f:
+            f.write(data)
         print(data)
         sleep(response_interval)

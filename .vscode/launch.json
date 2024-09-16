@@ -16,6 +16,13 @@
             "console": "integratedTerminal"
         },
         {
+            "name": "Run Nico Local Server",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/nico_local_server.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "Run Parsered Data Local Server",
             "type": "python",
             "request": "launch",
@@ -25,10 +32,19 @@
     ],
     "compounds": [
         {
-            "name": "Develop",
+            "name": "dev",
             "configurations": [
                 "Run Test Server",
                 "Run Data Parser",
+                "Run Nico Local Server",
+                "Run Parsered Data Local Server"
+            ]
+        },
+        {
+            "name": "prod",
+            "configurations": [
+                "Run Data Parser",
+                "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]
         }

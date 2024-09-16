@@ -1,30 +1,22 @@
 {
   "comment": [
     {
-      "data": "Hello world!",
+      "data": "qwerty",
       "delay": 0
     },
     {
-      "data": "This is a test",
-      "delay": 1
-    },
-    {
-      "data": "Good night",
-      "delay": 2111
+      "data": "wertyu",
+      "delay": 11111
     }
   ],
   "effect": [
     {
-      "data": "effectName_0",
+      "data": "fireworks",
       "delay": 0
     },
     {
-      "data": "effectName_1",
-      "delay": 1
-    },
-    {
-      "data": "effectName_2",
-      "delay": 2111
+      "data": "thunder",
+      "delay": 11101
     }
   ]
 }
