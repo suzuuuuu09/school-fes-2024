@@ -6,17 +6,17 @@
     },
     {
       "data": "wertyu",
-      "delay": 11111
+      "delay": 23456
     }
   ],
   "effect": [
     {
       "data": "fireworks",
-      "delay": 1234
+      "delay": 13579
     },
     {
       "data": "thunder",
-      "delay": 12335
+      "delay": 24680
     }
   ]
 }

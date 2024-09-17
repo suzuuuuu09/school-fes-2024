@@ -7,7 +7,7 @@ import json
 
 app = Flask(__name__)
 
-class DataParser:
+class ResponseParser:
     def __init__(self, url):
         self.url = url
 
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     output_file_path = 'data/output.json'
 
     while True:
-        parser = DataParser(url)
+        parser = ResponseParser(url)
         data = parser.get_data()
 
         df_comment, df_effect = parser.parse_data(data)
