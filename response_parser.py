@@ -35,19 +35,19 @@ class ResponseParser:
             df_effect.drop(columns=['timestamp'], inplace=True)
 
             return df_comment, df_effect
-        elif df_comment.empty:
+        elif df_comment.empty and not df_effect.empty:
             min_df_effect = df_effect['timestamp'].min()
             df_effect['delay'] = (df_effect['timestamp'] - min_df_effect)
             df_effect['delay'].fillna(0).astype(int)
             df_effect.drop(columns=['timestamp'], inplace=True)
             return None, df_effect
-        elif df_effect.empty:
+        elif not df_comment.empty and df_effect.empty :
             min_df_comment = df_comment['timestamp'].min()
             df_comment['delay'] = (df_comment['timestamp'] - min_df_comment)
             df_comment['delay'].fillna(0).astype(int)
             df_comment.drop(columns=['timestamp'], inplace=True)
             return df_comment, None
-        else:
+        elif df_comment.empty and df_effect.empty:
             return None, None
 
 
@@ -60,26 +60,3 @@ class ResponseParser:
         }
 
         return json.dumps(output_data, indent=2)
-
-if __name__ == '__main__':
-    # prodで実行する場合
-    # url = 'https://yaovxdll6j.execute-api.ap-northeast-1.amazonaws.com/school-fes-2024-UnityRequestReceiver'
-    # devで実行する場合
-    url = 'http://localhost:8888/'
-    response_interval = 5
-    output_file_path = 'data/output.json'
-
-    while True:
-        parser = ResponseParser(url)
-        data = parser.get_data()
-        try:
-            df_comment, df_effect = parser.parse_data(data)
-        except Exception as e:
-            print(f"Error parsing data: {e}")
-            df_comment, df_effect = None, None    
-
-        json_data = parser.json_data(df_comment, df_effect)
-        with open(output_file_path, 'w') as f:
-            f.write(json_data)
-        print(json_data)
-        sleep(response_interval)
