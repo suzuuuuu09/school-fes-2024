@@ -17,35 +17,40 @@ class ResponseParser:
     def parse_data(self, data):
         df_comment = pd.json_normalize(data['comment'])
         df_effect = pd.json_normalize(data['effect'])
-
-        if df_comment is not None and not df_comment.empty:
-           min_df_comment = df_comment['timestamp'].min()
-        else:
-            min_df_comment = None
-
-        if df_effect is not None and not df_effect.empty:
+        if not df_comment.empty and not df_effect.empty:
+            min_df_comment = df_comment['timestamp'].min()
             min_df_effect = df_effect['timestamp'].min()
-        else:
-            min_df_effect = None
 
-        if min_df_comment is not None and min_df_effect is not None:
             min_timestamp = min(min_df_comment, min_df_effect)
 
             # timestampの差を計算
-            df_comment['delay'] = (df_comment['timestamp'] - min_timestamp).fillna(0).astype(int)
-            df_effect['delay'] = (df_effect['timestamp'] - min_timestamp).fillna(0).astype(int)
+            df_comment['delay'] = (df_comment['timestamp'] - min_timestamp)
+            df_effect['delay'] = (df_effect['timestamp'] - min_timestamp)
+
+            df_comment['delay'].fillna(0).astype(int)
+            df_effect['delay'].fillna(0).astype(int)
 
             # timestamp列を削除
             df_comment.drop(columns=['timestamp'], inplace=True)
             df_effect.drop(columns=['timestamp'], inplace=True)
 
             return df_comment, df_effect
-        elif min_df_comment is None and min_df_effect is not None:
+        elif df_comment.empty:
+            min_df_effect = df_effect['timestamp'].min()
+            df_effect['delay'] = (df_effect['timestamp'] - min_df_effect)
+            df_effect['delay'].fillna(0).astype(int)
+            df_effect.drop(columns=['timestamp'], inplace=True)
             return None, df_effect
-        elif min_df_effect is None and min_df_comment is not None:
+        elif df_effect.empty:
+            min_df_comment = df_comment['timestamp'].min()
+            df_comment['delay'] = (df_comment['timestamp'] - min_df_comment)
+            df_comment['delay'].fillna(0).astype(int)
+            df_comment.drop(columns=['timestamp'], inplace=True)
             return df_comment, None
         else:
             return None, None
+
+
 
     def json_data(self, df_comment, df_effect):
         # 出力用のjsonデータを生成
