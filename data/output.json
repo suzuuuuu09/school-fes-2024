@@ -1,4 +1,17 @@
 {
-  "comment": [],
+  "comment": [
+    {
+      "data": "Hello world!",
+      "timestamp": 123456789
+    },
+    {
+      "data": "This is a test",
+      "timestamp": 123456790
+    },
+    {
+      "data": "Good night",
+      "timestamp": 123458901
+    }
+  ],
   "effect": []
 }
