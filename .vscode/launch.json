@@ -9,10 +9,17 @@
             "console": "integratedTerminal"
         },
         {
-            "name": "Run Response Parser",
+            "name": "Run Dev Response Parser",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/response_parser.py",
+            "program": "${workspaceFolder}/dev_response_parser.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Run Prod Response Parser",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/prod_response_parser.py",
             "console": "integratedTerminal"
         },
         {
@@ -35,7 +42,7 @@
             "name": "dev",
             "configurations": [
                 "Run Test Server",
-                "Run Response Parser",
+                "Run Dev Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]
@@ -43,7 +50,7 @@
         {
             "name": "prod",
             "configurations": [
-                "Run Response Parser",
+                "Run Prod Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]
