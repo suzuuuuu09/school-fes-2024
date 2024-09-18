@@ -1,22 +1,4 @@
 {
-  "comment": [
-    {
-      "data": "qwerty",
-      "delay": 0
-    },
-    {
-      "data": "wertyu",
-      "delay": 23456
-    }
-  ],
-  "effect": [
-    {
-      "data": "fireworks",
-      "delay": 13579
-    },
-    {
-      "data": "thunder",
-      "delay": 24680
-    }
-  ]
+  "comment": [],
+  "effect": []
 }
