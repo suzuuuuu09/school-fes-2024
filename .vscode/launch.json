@@ -42,7 +42,7 @@
             "name": "dev",
             "configurations": [
                 "Run Test Server",
-                "Run Dev Response Parser",
+                // "Run Dev Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]
@@ -50,7 +50,7 @@
         {
             "name": "prod",
             "configurations": [
-                "Run Prod Response Parser",
+                // "Run Prod Response Parser",
                 "Run Nico Local Server",
                 "Run Parsered Data Local Server"
             ]

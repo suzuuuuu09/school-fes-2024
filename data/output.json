@@ -1,17 +1,4 @@
 {
-  "comment": [
-    {
-      "data": "Hello world!",
-      "delay": 0
-    },
-    {
-      "data": "This is a test",
-      "delay": 1
-    },
-    {
-      "data": "Good night",
-      "delay": 2112
-    }
-  ],
+  "comment": [],
   "effect": []
 }
